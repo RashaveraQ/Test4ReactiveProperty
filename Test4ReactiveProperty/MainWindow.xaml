@@ -8,12 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Canvas>
-            <Ellipse Fill="Blue" Width="10" Height="10">
-                <Ellipse.RenderTransform>
-                    <TranslateTransform X="{Binding PosX.Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                        Y="{Binding PosY.Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </Ellipse.RenderTransform>
-            </Ellipse>
+            <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding PosX.Value}" Canvas.Top="{Binding PosY.Value}"/>
         </Canvas>
     </Grid>
 </Window>
