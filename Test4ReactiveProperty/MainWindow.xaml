@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Canvas>
+            <Ellipse Fill="Blue" Width="10" Height="10">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="{Binding PosX.Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Y="{Binding PosY.Value, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Canvas>
     </Grid>
 </Window>

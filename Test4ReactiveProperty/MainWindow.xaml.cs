@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Reactive.Bindings;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Test4ReactiveProperty
 {
@@ -20,9 +8,13 @@ namespace Test4ReactiveProperty
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ReactiveProperty<double> PosX { get; } = new ReactiveProperty<double>(100);
+        public ReactiveProperty<double> PosY { get; } = new ReactiveProperty<double>(20);
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }
