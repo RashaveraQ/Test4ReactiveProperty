@@ -8,7 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Canvas>
-            <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding Pos.Value.X}" Canvas.Top="{Binding Pos.Value.Y}"/>
+            <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding Points[0].Value.X}" Canvas.Top="{Binding Points[0].Value.Y}"/>
+            <Ellipse Fill="Red" Width="10" Height="10" Canvas.Left="{Binding Points[1].Value.X}" Canvas.Top="{Binding Points[1].Value.Y}"/>
         </Canvas>
     </Grid>
 </Window>
