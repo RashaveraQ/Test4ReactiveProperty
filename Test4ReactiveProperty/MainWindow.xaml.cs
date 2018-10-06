@@ -12,7 +12,8 @@ namespace Test4ReactiveProperty
     {
         public ReactiveProperty<Point>[] Points { get; } = {
             new ReactiveProperty<Point>(),
-            new ReactiveProperty<Point>()
+            new ReactiveProperty<Point>(),
+            new ReactiveProperty<Point>(),
         };
 
         public MainWindow()
@@ -33,6 +34,16 @@ namespace Test4ReactiveProperty
             source
                 .Select(x => 2 * x)
                 .Subscribe(th => Points[1].Value = new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th)));
+
+            MousePoint
+                .Delay(TimeSpan.FromSeconds(1))
+                .Subscribe(p => Points[2].Value = p);
+        }
+
+        private ReactiveProperty<Point> MousePoint { get; } = new ReactiveProperty<Point>();
+        private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            MousePoint.Value = e.GetPosition(this);
         }
     }
 }

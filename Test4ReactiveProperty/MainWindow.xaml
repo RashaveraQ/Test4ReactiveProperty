@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test4ReactiveProperty"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MouseMove="Window_MouseMove">
     <Grid>
         <Canvas>
             <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding Points[0].Value.X}" Canvas.Top="{Binding Points[0].Value.Y}"/>
             <Ellipse Fill="Red" Width="10" Height="10" Canvas.Left="{Binding Points[1].Value.X}" Canvas.Top="{Binding Points[1].Value.Y}"/>
+            <Ellipse Fill="GreenYellow" Width="20" Height="20" Canvas.Left="{Binding Points[2].Value.X}" Canvas.Top="{Binding Points[2].Value.Y}"/>
         </Canvas>
     </Grid>
 </Window>
