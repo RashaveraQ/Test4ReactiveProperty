@@ -10,8 +10,7 @@ namespace Test4ReactiveProperty
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ReactiveProperty<double> PosX { get; } = new ReactiveProperty<double>();
-        public ReactiveProperty<double> PosY { get; } = new ReactiveProperty<double>();
+        public ReactiveProperty<Point> Pos { get; } = new ReactiveProperty<Point>();
 
         public MainWindow()
         {
@@ -24,8 +23,7 @@ namespace Test4ReactiveProperty
                     {
                         Point c = new Point(100, 100);
                         const double r = 100;
-                        PosX.Value = c.X + r * Math.Cos(th);
-                        PosY.Value = c.Y + r * Math.Sin(th);
+                        Pos.Value = new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th));
                     }
                 );
         }
