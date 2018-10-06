@@ -10,8 +10,8 @@ namespace Test4ReactiveProperty
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ReactiveProperty<double> PosX { get; } = new ReactiveProperty<double>(100);
-        public ReactiveProperty<double> PosY { get; } = new ReactiveProperty<double>(20);
+        public ReactiveProperty<double> PosX { get; } = new ReactiveProperty<double>();
+        public ReactiveProperty<double> PosY { get; } = new ReactiveProperty<double>();
 
         public MainWindow()
         {
@@ -19,11 +19,11 @@ namespace Test4ReactiveProperty
             DataContext = this;
 
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1))
-                .Subscribe( i =>
+                .Select(i => i * 2 * Math.PI / 360)
+                .Subscribe( th =>
                     {
                         Point c = new Point(100, 100);
                         const double r = 100;
-                        double th = i * 2 * Math.PI / 360;
                         PosX.Value = c.X + r * Math.Cos(th);
                         PosY.Value = c.Y + r * Math.Sin(th);
                     }
