@@ -10,6 +10,7 @@
         <Canvas>
             <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding Points[0].Value.X}" Canvas.Top="{Binding Points[0].Value.Y}"/>
             <Ellipse Fill="Red" Width="10" Height="10" Canvas.Left="{Binding Points[1].Value.X}" Canvas.Top="{Binding Points[1].Value.Y}"/>
+            <Ellipse Fill="Green" Width="30" Height="30" Canvas.Left="{Binding Points[3].Value.X}" Canvas.Top="{Binding Points[3].Value.Y}"/>
             <Ellipse Fill="GreenYellow" Width="20" Height="20" Canvas.Left="{Binding Points[2].Value.X}" Canvas.Top="{Binding Points[2].Value.Y}"/>
         </Canvas>
     </Grid>

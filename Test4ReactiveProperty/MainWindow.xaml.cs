@@ -14,6 +14,7 @@ namespace Test4ReactiveProperty
             new ReactiveProperty<Point>(),
             new ReactiveProperty<Point>(),
             new ReactiveProperty<Point>(),
+            new ReactiveProperty<Point>(),
         };
 
         public MainWindow()
@@ -38,6 +39,10 @@ namespace Test4ReactiveProperty
             MousePoint
                 .Delay(TimeSpan.FromSeconds(1))
                 .Subscribe(p => Points[2].Value = p);
+
+            Points[2]
+                .Delay(TimeSpan.FromMilliseconds(100))
+                .Subscribe(p => Points[3].Value = p);
         }
 
         private ReactiveProperty<Point> MousePoint { get; } = new ReactiveProperty<Point>();
