@@ -1,7 +1,6 @@
 ﻿using Reactive.Bindings;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Reactive.Linq;
 using System.Windows;
 
 namespace Test4ReactiveProperty
@@ -19,15 +18,16 @@ namespace Test4ReactiveProperty
             InitializeComponent();
             DataContext = this;
 
-            Task.Run(() => {
-                Point c = new Point(100,100);
-                const double r = 100;
-                for (double th = 0; ; th += 0.01) {
-                    PosX.Value = c.X + r * Math.Cos(th);
-                    PosY.Value = c.Y + r * Math.Sin(th);
-                    Thread.Sleep(10);
-                }
-            });
+            Observable.Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1))
+                .Subscribe( i =>
+                    {
+                        Point c = new Point(100, 100);
+                        const double r = 100;
+                        double th = i * 2 * Math.PI / 360;
+                        PosX.Value = c.X + r * Math.Cos(th);
+                        PosY.Value = c.Y + r * Math.Sin(th);
+                    }
+                );
         }
     }
 }
