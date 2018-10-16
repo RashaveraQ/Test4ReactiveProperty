@@ -1,6 +1,7 @@
 ﻿using Reactive.Bindings;
 using System;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Windows;
 
 namespace Test4ReactiveProperty
@@ -10,12 +11,7 @@ namespace Test4ReactiveProperty
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ReactiveProperty<Point>[] Points { get; } = {
-            new ReactiveProperty<Point>(),
-            new ReactiveProperty<Point>(),
-            new ReactiveProperty<Point>(),
-            new ReactiveProperty<Point>(),
-        };
+        public ReactiveProperty<Point>[] Points { get; } = new ReactiveProperty<Point>[4];
 
         public MainWindow()
         {
@@ -28,27 +24,29 @@ namespace Test4ReactiveProperty
             var source = Observable
                 .Timer(TimeSpan.Zero, TimeSpan.FromMilliseconds(1))
                 .Select(i => i * 2 * Math.PI / 360);
-           
-            source
-                .Subscribe( th => Points[0].Value = new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th)));
 
-            source
+            Points[0] = source
+                .Select(th => new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th)))
+                .ToReactiveProperty();
+
+            Points[1] = source
                 .Select(x => 2 * x)
-                .Subscribe(th => Points[1].Value = new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th)));
+                .Select(th => new Point(c.X + r * Math.Cos(th), c.Y + r * Math.Sin(th)))
+                .ToReactiveProperty();
 
-            MousePoint
+            Points[2] = MousePoint
                 .Delay(TimeSpan.FromSeconds(1))
-                .Subscribe(p => Points[2].Value = p);
+                .ToReactiveProperty();
 
-            Points[2]
+            Points[3] = Points[2]
                 .Delay(TimeSpan.FromMilliseconds(100))
-                .Subscribe(p => Points[3].Value = p);
+                .ToReactiveProperty();
         }
 
-        private ReactiveProperty<Point> MousePoint { get; } = new ReactiveProperty<Point>();
+        private Subject<Point> MousePoint { get; } = new Subject<Point>();
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            MousePoint.Value = e.GetPosition(this);
+            MousePoint.OnNext(e.GetPosition(this));
         }
     }
 }
