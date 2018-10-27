@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
 
 namespace WpfApp1.Models
 {
@@ -34,8 +26,7 @@ namespace WpfApp1.Models
         public MainModel()
         {
             Observable.Timer(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1))
-                .ObserveOn(Application.Current.Dispatcher)
-                .Subscribe(t => People.Add(new Person() { Age = (int)t }));
+                .Subscribe(t => People.Add(new Person() { Age = (int)t, Height = 100 + 10 * t, Weight = 20 * t }));
         }
     }
 }
