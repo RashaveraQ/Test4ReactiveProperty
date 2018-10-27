@@ -7,7 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" MouseMove="Window_MouseMove">
     <Grid>
-        <Canvas>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding bChecked1.Value}"/>
+            <CheckBox IsChecked="{Binding bChecked2.Value}"/>
+            <CheckBox IsChecked="{Binding bChecked3.Value}"/>
+            <CheckBox IsChecked="{Binding bChecked4.Value}"/>
+        </StackPanel>
+        <Canvas Grid.Row="1">
             <Ellipse Fill="Blue" Width="10" Height="10" Canvas.Left="{Binding Points[0].Value.X}" Canvas.Top="{Binding Points[0].Value.Y}"/>
             <Ellipse Fill="Red" Width="10" Height="10" Canvas.Left="{Binding Points[1].Value.X}" Canvas.Top="{Binding Points[1].Value.Y}"/>
             <Ellipse Fill="Green" Width="30" Height="30" Canvas.Left="{Binding Points[3].Value.X}" Canvas.Top="{Binding Points[3].Value.Y}"/>
