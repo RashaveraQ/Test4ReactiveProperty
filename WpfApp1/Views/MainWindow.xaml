@@ -8,15 +8,22 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListView ItemsSource="{Binding People}">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected.Value}"/>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Age}" Header="Age"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Height}" Header="Height"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Weight}" Header="Weight"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding IsSelected.Value}" Header="IsSelected"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding IsChecked.Value}" Header="IsChecked"/>
-                    <GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding IsSelected.Value}" Header="IsSelected.Value"/>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding IsChecked.Value}" Header="IsChecked.Value"/>
+                    <GridViewColumn Header="Checker">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding IsChecked.Value}"/>
