@@ -24,7 +24,7 @@ namespace WpfApp2
 
             var random = new Random(Environment.TickCount);
 
-            var source = Observable.Interval(TimeSpan.FromMilliseconds(20))
+            var source = Observable.Interval(TimeSpan.FromMilliseconds(1))
                             .Select(_ => random.Next(maxValue));
 
             var queue = source
@@ -33,6 +33,7 @@ namespace WpfApp2
                                 while (q.Count > sampling_size) q.RemoveAt(0);
                                 return q;
                             })
+                            .Where(x => x.Count == sampling_size)
                             .SelectMany(x => x);
 
             PathData = Observable.Range(0, sampling_size)
