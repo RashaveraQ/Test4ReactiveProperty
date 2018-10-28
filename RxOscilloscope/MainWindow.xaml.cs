@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WpfApp2
 {
@@ -13,8 +15,11 @@ namespace WpfApp2
     public partial class MainWindow : Window
     {
         public ReactiveProperty<string> PathData { get; }
+        Subject<MouseEventArgs> subject = new Subject<MouseEventArgs>();
 
-        const int maxValue = 400;
+        Point mousePos;
+
+        const int maxValue = 450;
         const int sampling_size = 100;
 
         public MainWindow()
@@ -22,12 +27,20 @@ namespace WpfApp2
             InitializeComponent();
             DataContext = this;
 
-            var random = new Random(Environment.TickCount);
+            //var random = new Random(Environment.TickCount);
+            var source = Observable.Interval(TimeSpan.FromMilliseconds(1))
+                           .Select(_ => (int)mousePos.Y);
 
-            var source = Observable.Interval(TimeSpan.FromMilliseconds(20))
-                            .Select(_ => random.Next(maxValue));
+            var delay_input = new ReactiveProperty<int>();
 
-            var queue = source
+            var delay_output = delay_input
+                                    .Delay(TimeSpan.FromSeconds(1))
+                                    .ToReactiveProperty();
+
+            source.CombineLatest(delay_output, (x, y) => (int)(x + 0.5 * (y - maxValue / 2)))
+                .Subscribe(_ => delay_input.Value = _);
+
+            var queue = delay_output 
                             .Scan(new List<int>(), (q, x) => {
                                 q.Add(x);
                                 while (q.Count > sampling_size) q.RemoveAt(0);
@@ -40,6 +53,11 @@ namespace WpfApp2
                         .Aggregate((x, y) => x + y)
                         .Repeat()
                         .ToReactiveProperty();
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            mousePos = e.GetPosition(Canvas);
         }
     }
 }

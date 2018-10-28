@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="RxOscilloscope" Height="450" Width="1000">
-    <Canvas>
+        Title="RxOscilloscope" Height="450" Width="1000" MouseMove="Window_MouseMove">
+    <Canvas Name="Canvas">
         <Path Stroke="DarkGoldenRod" StrokeThickness="1" Data="{Binding PathData.Value}" />
     </Canvas>
 </Window>
