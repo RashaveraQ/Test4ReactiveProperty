@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test4ReactiveProperty", "Test4ReactiveProperty\Test4ReactiveProperty.csproj", "{9E757355-F46E-4621-B65C-20D6C4C28CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{95E60C02-4369-47E5-8718-9EAA2A47DBD2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\ConsoleApp3.csproj", "{28650E6A-89AC-4F8E-A474-43F2065C4F19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxOscilloscope", "RxOscilloscope\RxOscilloscope.csproj", "{4C7EB086-53E2-4E57-8DC1-78CC976E3F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test4ReadOnlyReactiveCollection", "Test4ReadOnlyReactiveCollection\Test4ReadOnlyReactiveCollection.csproj", "{95E60C02-4369-47E5-8718-9EAA2A47DBD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{9E757355-F46E-4621-B65C-20D6C4C28CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E757355-F46E-4621-B65C-20D6C4C28CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E757355-F46E-4621-B65C-20D6C4C28CF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28650E6A-89AC-4F8E-A474-43F2065C4F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28650E6A-89AC-4F8E-A474-43F2065C4F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28650E6A-89AC-4F8E-A474-43F2065C4F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{4C7EB086-53E2-4E57-8DC1-78CC976E3F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C7EB086-53E2-4E57-8DC1-78CC976E3F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C7EB086-53E2-4E57-8DC1-78CC976E3F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E60C02-4369-47E5-8718-9EAA2A47DBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
